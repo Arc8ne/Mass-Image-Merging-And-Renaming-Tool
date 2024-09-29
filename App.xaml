@@ -1,0 +1,9 @@
+﻿<Application x:Class="Mass_Image_Merging_And_Renaming_Tool.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:Mass_Image_Merging_And_Renaming_Tool"
+             StartupUri="MainWindow.xaml">
+    <Application.Resources>
+         
+    </Application.Resources>
+</Application>
