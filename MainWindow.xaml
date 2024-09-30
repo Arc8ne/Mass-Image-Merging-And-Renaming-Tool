@@ -6,7 +6,23 @@
         xmlns:local="clr-namespace:Mass_Image_Merging_And_Renaming_Tool"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Grid>
+    <StackPanel Orientation="Vertical">
+        <DockPanel>
+            <DockPanel.Resources>
+                <Style TargetType="Button">
+                    <Setter Property="Padding" Value="4"/>
 
-    </Grid>
+                    <Setter Property="HorizontalContentAlignment" Value="Left"/>
+                </Style>
+            </DockPanel.Resources>
+
+            <Button x:Name="MassRenameFilesTab" DockPanel.Dock="Left">Mass rename files</Button>
+
+            <Button x:Name="MergeImagesTab" DockPanel.Dock="Left">Merge images</Button>
+
+            <Border BorderThickness="0,0,0,0.5" BorderBrush="Black"></Border>
+        </DockPanel>
+
+        <ContentPresenter x:Name="CurrentTabContentPresenter"/>
+    </StackPanel>
 </Window>

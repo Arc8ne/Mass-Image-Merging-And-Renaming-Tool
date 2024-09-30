@@ -1,0 +1,55 @@
+﻿<UserControl x:Class="Mass_Image_Merging_And_Renaming_Tool.MergeImagesView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Mass_Image_Merging_And_Renaming_Tool"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800" Background="White" Padding="8">
+    <Grid>
+        <StackPanel Orientation="Vertical">
+            <StackPanel Orientation="Vertical">
+                <TextBlock>Path to folder to output merged image to</TextBlock>
+
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+
+                        <ColumnDefinition Width="4"/>
+
+                        <ColumnDefinition Width="auto"/>
+                    </Grid.ColumnDefinitions>
+
+                    <TextBox/>
+
+                    <!-- Button that opens folder selection dialog when clicked -->
+                    <Button Grid.Column="2" Padding="4,0" VerticalContentAlignment="Center">
+                        <Canvas Width="24" Height="24">
+                            <Canvas.LayoutTransform>
+                                <ScaleTransform ScaleX="0.5" ScaleY="0.5"/>
+                            </Canvas.LayoutTransform>
+                            
+                            <Path Fill="Black">
+                                <Path.Data>
+                                    <PathGeometry Figures="M8 12a2 2 0 1 1-4 0 2 2 0 0 1 4 0ZM14 12a2 2 0 1 1-4 0 2 2 0 0 1 4 0ZM18 14a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z" FillRule="NonZero" />
+                                </Path.Data>
+                            </Path>
+                        </Canvas>
+                    </Button>
+                </Grid>
+            </StackPanel>
+
+            <StackPanel Orientation="Vertical">
+                <TextBlock>Name of merged image file</TextBlock>
+
+                <TextBox/>
+            </StackPanel>
+
+            <StackPanel Orientation="Vertical">
+                <TextBlock>Size (in pixels) of gap between each of the merged images</TextBlock>
+
+                <TextBox/>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</UserControl>
