@@ -19,15 +19,15 @@
             <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
         
-        <TextBlock Grid.Row="0" FontSize="26" FontWeight="Bold">Files to rename</TextBlock>
+        <TextBlock Grid.Row="0" FontSize="18" FontWeight="Bold">Files to rename</TextBlock>
 
-        <DataGrid Grid.Row="2">
+        <DataGrid Grid.Row="2" SelectionMode="Extended" AutoGenerateColumns="False">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="File path"></DataGridTextColumn>
+                <DataGridTextColumn Header="File path" Binding="{Binding Path=FilePath}"></DataGridTextColumn>
 
-                <DataGridTextColumn Header="Date and time of latest update"></DataGridTextColumn>
+                <DataGridTextColumn Header="Date and time of latest update" Binding="{Binding Path=DateTimeOfLatestUpdateAsString}"></DataGridTextColumn>
 
-                <DataGridTextColumn Header="New file name"></DataGridTextColumn>
+                <DataGridTextColumn Header="New file name" Binding="{Binding Path=NewFileName}"></DataGridTextColumn>
             </DataGrid.Columns>
         </DataGrid>
 
@@ -40,14 +40,14 @@
                 </Style>
             </StackPanel.Resources>
             
-            <Button>Add file(s)</Button>
+            <Button x:Name="AddFilesButton" Click="OnAddFilesButtonClick">Add file(s)</Button>
 
             <Button>Add file(s) from folder(s)</Button>
 
-            <Button>Rename all</Button>
-
             <!-- TODO: Conditionally render this button only if 1 or more rows in the table are selected. -->
             <Button Margin="0">Remove from table</Button>
+
+            <Button>Rename all</Button>
         </StackPanel>
     </Grid>
 </UserControl>

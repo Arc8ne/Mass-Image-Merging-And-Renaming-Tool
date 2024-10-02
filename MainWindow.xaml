@@ -16,9 +16,9 @@
                 </Style>
             </DockPanel.Resources>
 
-            <Button x:Name="MassRenameFilesTab" DockPanel.Dock="Left">Mass rename files</Button>
+            <Button x:Name="MassRenameFilesTab" DockPanel.Dock="Left" Click="OnMassRenameFilesTabClick">Mass rename files</Button>
 
-            <Button x:Name="MergeImagesTab" DockPanel.Dock="Left">Merge images</Button>
+            <Button x:Name="MergeImagesTab" DockPanel.Dock="Left" Click="OnMergeImagesTabClick">Merge images</Button>
 
             <Border BorderThickness="0,0,0,0.5" BorderBrush="Black"></Border>
         </DockPanel>

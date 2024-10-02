@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +21,37 @@ namespace Mass_Image_Merging_And_Renaming_Tool
     /// </summary>
     public partial class MassRenameFilesView : UserControl
     {
+        List<FilesToRenameTableEntry> filesToRenameTableEntries = [];
+
         public MassRenameFilesView()
         {
             InitializeComponent();
+        }
+
+        private void OnAddFilesButtonClick(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog fileSelectionDialog = new OpenFileDialog()
+            {
+                Multiselect = true,
+            };
+
+            bool? didUserClickOkButton = fileSelectionDialog.ShowDialog();
+
+            if (didUserClickOkButton == null || didUserClickOkButton == false)
+            {
+                return;
+            }
+
+            // TODO
+        }
+
+        private class FilesToRenameTableEntry
+        {
+            public string filePath = "";
+
+            public DateTime dateTimeOfLatestUpdate;
+
+            public string newFileName = "";
         }
     }
 }

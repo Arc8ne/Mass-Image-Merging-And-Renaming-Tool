@@ -6,50 +6,77 @@
              xmlns:local="clr-namespace:Mass_Image_Merging_And_Renaming_Tool"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800" Background="White" Padding="8">
-    <Grid>
+    <StackPanel Orientation="Vertical">
         <StackPanel Orientation="Vertical">
-            <StackPanel Orientation="Vertical">
-                <TextBlock>Path to folder to output merged image to</TextBlock>
+            <TextBlock>Path to folder to output merged image to</TextBlock>
 
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*"/>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
 
-                        <ColumnDefinition Width="4"/>
+                    <ColumnDefinition Width="4"/>
 
-                        <ColumnDefinition Width="auto"/>
-                    </Grid.ColumnDefinitions>
-
-                    <TextBox/>
-
-                    <!-- Button that opens folder selection dialog when clicked -->
-                    <Button Grid.Column="2" Padding="4,0" VerticalContentAlignment="Center">
-                        <Canvas Width="24" Height="24">
-                            <Canvas.LayoutTransform>
-                                <ScaleTransform ScaleX="0.5" ScaleY="0.5"/>
-                            </Canvas.LayoutTransform>
-                            
-                            <Path Fill="Black">
-                                <Path.Data>
-                                    <PathGeometry Figures="M8 12a2 2 0 1 1-4 0 2 2 0 0 1 4 0ZM14 12a2 2 0 1 1-4 0 2 2 0 0 1 4 0ZM18 14a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z" FillRule="NonZero" />
-                                </Path.Data>
-                            </Path>
-                        </Canvas>
-                    </Button>
-                </Grid>
-            </StackPanel>
-
-            <StackPanel Orientation="Vertical">
-                <TextBlock>Name of merged image file</TextBlock>
+                    <ColumnDefinition Width="auto"/>
+                </Grid.ColumnDefinitions>
 
                 <TextBox/>
-            </StackPanel>
 
-            <StackPanel Orientation="Vertical">
-                <TextBlock>Size (in pixels) of gap between each of the merged images</TextBlock>
+                <!-- Button that opens folder selection dialog when clicked -->
+                <Button Grid.Column="2" Padding="4,0" VerticalContentAlignment="Center">
+                    <Canvas Width="24" Height="24">
+                        <Canvas.LayoutTransform>
+                            <ScaleTransform ScaleX="0.5" ScaleY="0.5"/>
+                        </Canvas.LayoutTransform>
 
-                <TextBox/>
-            </StackPanel>
+                        <Path Fill="Black">
+                            <Path.Data>
+                                <PathGeometry Figures="M8 12a2 2 0 1 1-4 0 2 2 0 0 1 4 0ZM14 12a2 2 0 1 1-4 0 2 2 0 0 1 4 0ZM18 14a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z" FillRule="NonZero" />
+                            </Path.Data>
+                        </Path>
+                    </Canvas>
+                </Button>
+            </Grid>
         </StackPanel>
-    </Grid>
+
+        <StackPanel Orientation="Vertical">
+            <TextBlock>Name of merged image file</TextBlock>
+
+            <TextBox/>
+        </StackPanel>
+
+        <StackPanel Orientation="Vertical">
+            <TextBlock>Size (in pixels) of gap between each of the merged images</TextBlock>
+
+            <TextBox/>
+        </StackPanel>
+
+        <TextBlock Grid.Row="0" FontSize="18" FontWeight="Bold">Images to merge</TextBlock>
+
+        <DataGrid Grid.Row="2">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="File path"></DataGridTextColumn>
+
+                <DataGridTextColumn Header="Date and time of latest update"></DataGridTextColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <StackPanel Grid.Row="4" Orientation="Horizontal" HorizontalAlignment="Center">
+            <StackPanel.Resources>
+                <Style TargetType="Button">
+                    <Setter Property="Margin" Value="0,0,8,0"/>
+
+                    <Setter Property="Padding" Value="4"/>
+                </Style>
+            </StackPanel.Resources>
+
+            <Button>Add file(s)</Button>
+
+            <Button>Add file(s) from folder(s)</Button>
+
+            <!-- TODO: Conditionally render this button only if 1 or more rows in the table are selected. -->
+            <Button Margin="0">Remove from table</Button>
+
+            <Button>Merge all</Button>
+        </StackPanel>
+    </StackPanel>
 </UserControl>

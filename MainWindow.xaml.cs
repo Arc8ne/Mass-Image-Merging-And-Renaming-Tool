@@ -16,9 +16,25 @@ namespace Mass_Image_Merging_And_Renaming_Tool
     /// </summary>
     public partial class MainWindow : Window
     {
+        MassRenameFilesView massRenameFilesView = new MassRenameFilesView();
+
+        MergeImagesView mergeImagesView = new MergeImagesView();
+
         public MainWindow()
         {
             InitializeComponent();
+
+            this.CurrentTabContentPresenter.Content = this.massRenameFilesView;
+        }
+
+        private void OnMassRenameFilesTabClick(object sender, RoutedEventArgs e)
+        {
+            this.CurrentTabContentPresenter.Content = this.massRenameFilesView;
+        }
+
+        private void OnMergeImagesTabClick(object sender, RoutedEventArgs e)
+        {
+            this.CurrentTabContentPresenter.Content = this.mergeImagesView;
         }
     }
 }
