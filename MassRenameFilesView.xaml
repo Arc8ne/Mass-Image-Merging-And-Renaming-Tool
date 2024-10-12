@@ -21,13 +21,13 @@
         
         <TextBlock Grid.Row="0" FontSize="18" FontWeight="Bold">Files to rename</TextBlock>
 
-        <DataGrid Grid.Row="2" SelectionMode="Extended" AutoGenerateColumns="False">
+        <DataGrid Grid.Row="2" SelectionMode="Extended" AutoGenerateColumns="False" CanUserAddRows="False" ItemsSource="{Binding Path=FilesToRenameTableEntries}" ColumnWidth="*" HeadersVisibility="Column">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="File path" Binding="{Binding Path=FilePath}"></DataGridTextColumn>
+                <DataGridTextColumn Header="File path" IsReadOnly="True" Binding="{Binding Path=FilePath}"></DataGridTextColumn>
 
-                <DataGridTextColumn Header="Date and time of latest update" Binding="{Binding Path=DateTimeOfLatestUpdateAsString}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Date and time of latest update" IsReadOnly="True" Binding="{Binding Path=DateTimeOfLatestUpdateAsString}"></DataGridTextColumn>
 
-                <DataGridTextColumn Header="New file name" Binding="{Binding Path=NewFileName}"></DataGridTextColumn>
+                <DataGridTextColumn Header="New file name" IsReadOnly="True" Binding="{Binding Path=NewFileName}"></DataGridTextColumn>
             </DataGrid.Columns>
         </DataGrid>
 

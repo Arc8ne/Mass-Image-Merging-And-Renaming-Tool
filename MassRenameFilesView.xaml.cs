@@ -1,6 +1,8 @@
 ﻿using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -21,10 +23,12 @@ namespace Mass_Image_Merging_And_Renaming_Tool
     /// </summary>
     public partial class MassRenameFilesView : UserControl
     {
-        List<FilesToRenameTableEntry> filesToRenameTableEntries = [];
+        public ObservableCollection<FilesToRenameTableEntry> FilesToRenameTableEntries { get; set; } = [];
 
         public MassRenameFilesView()
         {
+            this.DataContext = this;
+
             InitializeComponent();
         }
 
@@ -42,16 +46,52 @@ namespace Mass_Image_Merging_And_Renaming_Tool
                 return;
             }
 
-            // TODO
+            foreach (string selectedFilePath in fileSelectionDialog.FileNames)
+            {
+                this.FilesToRenameTableEntries.Add(
+                    new FilesToRenameTableEntry()
+                    {
+                        filesToRenameTableEntries = this.FilesToRenameTableEntries,
+                        FilePath = selectedFilePath,
+
+                    }
+                );
+            }
         }
 
-        private class FilesToRenameTableEntry
+        public class FilesToRenameTableEntry
         {
-            public string filePath = "";
+            public ObservableCollection<FilesToRenameTableEntry> filesToRenameTableEntries;
 
-            public DateTime dateTimeOfLatestUpdate;
+            public string FilePath { get; set; } = "";
 
-            public string newFileName = "";
+            public DateTime DateTimeOfLatestUpdate
+            {
+                get
+                {
+                    return File.GetLastWriteTime(this.FilePath);
+                }
+            }
+
+            public string DateTimeOfLatestUpdateAsString
+            {
+                get
+                {
+                    string dateTimeOfLatestUpdateAsString = this.DateTimeOfLatestUpdate.ToString("dd/MM/yyyy hh:mm:ss tt");
+
+                    return dateTimeOfLatestUpdateAsString;
+                }
+            }
+
+            public string NewFileName
+            {
+                get
+                {
+                    return Convert.ToString(
+                        this.filesToRenameTableEntries.IndexOf(this)
+                    );
+                }
+            }
         }
     }
 }
